@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'YouGrow',
+      title: 'YouGro',
       initialRoute: '/',
       routes: {
         '/': (context) => YGBottomBar(),
