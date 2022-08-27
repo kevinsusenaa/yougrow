@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   simple_shadow: ^0.3.0
   youtube_player_flutter: ^8.0.0
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
