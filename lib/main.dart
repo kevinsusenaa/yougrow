@@ -16,12 +16,11 @@ void main() {
   runApp(const MyApp());
 }
 
-void unitTestRestClient(){
+void unitTestRestClient() async{
   UserClient userClient = UserClient();
   
-  userClient.login(LoginRequest(email: "budi",password: "budi"));
-  
-  
+  await userClient.login(LoginRequest(email: "budi",password: "budi"));
+
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +30,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    unitTestRestClient();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'YouGrow',

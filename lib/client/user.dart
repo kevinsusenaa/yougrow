@@ -25,6 +25,8 @@ class UserClient {
   Future<RegistrationResponse> registration(RegistrationRequest request) async {
     String urlPath = "/api/youth/register";
 
+
+
     Map<String,dynamic> payload = <String,dynamic>{};
     payload["name"] = request.name;
     payload["username"] = request.username;
@@ -41,7 +43,18 @@ class UserClient {
     payload["confirmationDate"] = request.confirmationDate;
     payload["confirmationCongregation"] = request.confirmationCongregation;
     payload["activeCongregation"] = request.activeCongregation;
-    payload["file"] = MultipartFile.fromFile(request.file?.name ?? "unnamed");
+
+    if(request.file != null) {
+      String fileName = request.file!
+          .path
+          .split('/')
+          .last;
+
+      payload["file"] = await MultipartFile.fromFile(
+          request.file!.path,
+          filename: fileName
+      );
+    }
 
     Response response = await _httpClient.doPostFormData(urlPath, payload, <String, dynamic>{});
     print("registration response : ${response.data}");
